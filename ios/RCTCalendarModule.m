@@ -24,4 +24,23 @@ RCT_EXPORT_METHOD(createCalendarEventCallback:(NSString *)title location:(NSStri
   callback(@[[NSNull null], eventId]);
 }
 
+
+RCT_EXPORT_METHOD(createCalendarEventCallback:(NSString *)title
+                  location:(NSString *)location
+                  errorCallback: (RCTResponseSenderBlock)errorCallback
+                  successCallback: (RCTResponseSenderBlock)successCallback)
+{
+  @try {
+    NSNumber *eventId = [NSNumber numberWithInt:123];
+     RCTLogInfo(@"Title and location at multiple callbacks -  %@ at %@", title, location);
+    successCallback(@[eventId]);
+  }
+
+  @catch ( NSException *e ) {
+    errorCallback(@[e]);
+  }
+}
+
+
+
 @end

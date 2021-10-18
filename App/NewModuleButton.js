@@ -21,6 +21,21 @@ const NewModuleButton = () => {
       },
     )
   }
+  const onButton3Press = () => {
+    const successCB = eventId => {
+      console.log(`event id ${eventId} returned`)
+    }
+    const errorCB = error => {
+      console.error(`Error found! ${error}`)
+    }
+
+    CalendarModule.createCalendarEventCallback(
+      'button3 name',
+      'button 3 location',
+      errorCB,
+      successCB,
+    )
+  }
   return (
     <>
       <Button
@@ -32,6 +47,11 @@ const NewModuleButton = () => {
         title="Calender Event with callback"
         color="#123442"
         onPress={onButton2Press}
+      />
+      <Button
+        title="Calender Event with multiple callbacks"
+        color="#f73947"
+        onPress={onButton3Press}
       />
     </>
   )
