@@ -4,8 +4,14 @@ import { NativeModules, Button } from 'react-native'
 const { CalendarModule } = NativeModules
 
 const NewModuleButton = () => {
+  const { DEFAULT_EVENT_NAME, DEFAULT_EVENT_NAME2 } =
+    CalendarModule.getConstants()
+
   const onButton1Press = () => {
     console.log('We will invoke the native module here!')
+    console.log('DEFAULT_EVENT_NAME ', DEFAULT_EVENT_NAME)
+    console.log('DEFAULT_EVENT_NAME2 ', DEFAULT_EVENT_NAME2)
+
     CalendarModule.createCalendarEvent('testName', 'testLocation')
   }
 
