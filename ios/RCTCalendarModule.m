@@ -19,12 +19,6 @@ RCT_EXPORT_METHOD(createCalendarEvent:(NSString *)name location:(NSString *)loca
 }
 
 
-RCT_EXPORT_METHOD(createCalendarEventCallback:(NSString *)title location:(NSString *)location callback: (RCTResponseSenderBlock)callback) {
-  NSNumber *eventId = [NSNumber numberWithInt:123];
-  callback(@[[NSNull null], eventId]);
-}
-
-
 RCT_EXPORT_METHOD(createCalendarEventCallback:(NSString *)title
                   location:(NSString *)location
                   errorCallback: (RCTResponseSenderBlock)errorCallback
@@ -40,6 +34,19 @@ RCT_EXPORT_METHOD(createCalendarEventCallback:(NSString *)title
     errorCallback(@[e]);
   }
 }
+
+//RCT_EXPORT_METHOD(createCalendarEventWithPromise:(NSString *)title
+//                 location:(NSString *)location
+//                 resolver:(RCTPromiseResolveBlock)resolve
+//                 rejecter:(RCTPromiseRejectBlock)reject)
+//{
+// NSInteger eventId = createCalendarEvent();
+// if (eventId) {
+//    resolve(@(eventId));
+//  } else {
+//    reject(@"event_failure", @"no event id returned", nil);
+//  }
+//}
 
 
 

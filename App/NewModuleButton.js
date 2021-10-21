@@ -9,18 +9,6 @@ const NewModuleButton = () => {
     CalendarModule.createCalendarEvent('testName', 'testLocation')
   }
 
-  const onButton2Press = () => {
-    CalendarModule.createCalendarEventCallback(
-      'testName',
-      'testLocation',
-      (error, eventId) => {
-        if (error) {
-          console.error(`Error found! ${error}`)
-        }
-        console.log(`event id ${eventId} returned`)
-      },
-    )
-  }
   const onButton3Press = () => {
     const successCB = eventId => {
       console.log(`event id ${eventId} returned`)
@@ -36,6 +24,31 @@ const NewModuleButton = () => {
       successCB,
     )
   }
+
+  const onButton4Press = async () => {
+    try {
+      const eventId = await CalendarModule.createAsyncCalenderEvent(
+        'Party',
+        'my house',
+      )
+      console.log(`Created a new event with id ${eventId}`)
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  // const onButton5Press = async () => {
+  //   try {
+  //     const eventId = await CalendarModule.createCalendarEvent(
+  //       'promiseparty',
+  //       'promise house',
+  //     )
+  //     console.log(`Created a new event with id ${eventId}`)
+  //   } catch (e) {
+  //     console.error(e)
+  //   }
+  // }
+
   return (
     <>
       <Button
@@ -43,16 +56,22 @@ const NewModuleButton = () => {
         color="#841584"
         onPress={onButton1Press}
       />
-      <Button
-        title="Calender Event with callback"
-        color="#123442"
-        onPress={onButton2Press}
-      />
+
       <Button
         title="Calender Event with multiple callbacks"
         color="#f73947"
         onPress={onButton3Press}
       />
+      <Button
+        title="Calender Event with async"
+        color="#f73947"
+        onPress={onButton4Press}
+      />
+      {/* <Button
+        title="Calender Event with promise"
+        color="#f73947"
+        onPress={onButton5Press}
+      /> */}
     </>
   )
 }
