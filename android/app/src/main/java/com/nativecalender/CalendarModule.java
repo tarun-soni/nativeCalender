@@ -2,6 +2,10 @@ package com.nativecalender;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.facebook.react.modules.core.DeviceEventManagerModule;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.bridge.Arguments;
 
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.NativeModule;
@@ -25,12 +29,45 @@ public class CalendarModule extends ReactContextBaseJavaModule {
         return "CalendarModule";
     }
 
+
+    //    events
+    private void sendEvent(ReactContext reactContext,String eventName,@Nullable WritableMap params) {
+        reactContext
+                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+                .emit(eventName, params);
+    }
+    @ReactMethod
+    public void addListener(String eventName) {
+
+        // Set up any upstream listeners or background tasks as necessary
+    }
+
+    @ReactMethod
+    public void removeListeners(Integer count) {
+        
+        // Remove upstream listeners, stop unnecessary background tasks
+    }
+
+
+
+
     @ReactMethod
     public void createCalendarEvent(String name, String location) {
+
         Log.d("CalendarModule", "android Created event called with name: " + name
                 + " and location: " + location);
-
         System.out.println("iN Calendar module " + name + location +"     --------- name and location" );
+
+        WritableMap params = Arguments.createMap();
+        params.putString("eventProperty", "someValue");
+        params.putString("eventProperty2", "someValue2");
+
+        System.out.println("params---" + params);
+
+
+        ReactContext context = getReactApplicationContext();
+        System.out.println("CONtext----"+ context);
+        sendEvent(context, "EventReminder", params);
     }
 
     @Override
@@ -55,6 +92,8 @@ public class CalendarModule extends ReactContextBaseJavaModule {
         }
     }
 
+
+    // promise
     @ReactMethod
     public void createPromiseCalendarEvent(String name, String location, Promise promise) {
         try {
@@ -63,10 +102,14 @@ public class CalendarModule extends ReactContextBaseJavaModule {
             Integer eventId = random;
 
             promise.resolve(eventId);
-        } catch(Exception e) {
-            promise.reject("Create Event Error", e);
-        }
 
+        } catch(Exception e) {
+            promise.reject("Create Event error", "Error parsing date", e);
+
+        }
     }
+
+
+
 
 }
