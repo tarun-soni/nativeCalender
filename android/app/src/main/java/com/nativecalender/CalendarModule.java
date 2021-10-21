@@ -3,13 +3,16 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.NativeModule;
+import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Random;
 
 public class CalendarModule extends ReactContextBaseJavaModule {
     CalendarModule(ReactApplicationContext context) {
@@ -38,4 +41,32 @@ public class CalendarModule extends ReactContextBaseJavaModule {
         constants.put("DEFAULT_EVENT_NAME2", "Test New evenntt 2 ");
         return constants;
     }
+
+
+    @ReactMethod
+    public void createCalendarEventCallback(String name, String location, Callback myFailureCallback, Callback mySuccessCallback) {
+        try {
+            System.out.println("name:-----" + name + " location------ " + location);
+
+            mySuccessCallback.invoke(10);
+        }catch (Exception e){
+            System.out.println("error in cb" + e);
+            myFailureCallback.invoke(20);
+        }
+    }
+
+    @ReactMethod
+    public void createPromiseCalendarEvent(String name, String location, Promise promise) {
+        try {
+            final int random = new Random().nextInt(61) + 20;
+
+            Integer eventId = random;
+
+            promise.resolve(eventId);
+        } catch(Exception e) {
+            promise.reject("Create Event Error", e);
+        }
+
+    }
+
 }

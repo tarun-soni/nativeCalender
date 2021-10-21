@@ -1,5 +1,5 @@
 import React from 'react'
-import { NativeModules, Button } from 'react-native'
+import { NativeModules, Button, SafeAreaView } from 'react-native'
 
 const { CalendarModule } = NativeModules
 
@@ -55,8 +55,19 @@ const NewModuleButton = () => {
   //   }
   // }
 
+  const onButton6Press = async () => {
+    try {
+      const eventId = await CalendarModule.createPromiseCalendarEvent(
+        'Party',
+        'My House',
+      )
+      console.log(`Created a new event with id ${eventId}`)
+    } catch (error) {
+      console.log(`error`, error)
+    }
+  }
   return (
-    <>
+    <SafeAreaView style={{ margin: 10 }}>
       <Button
         title="Calender Event Button"
         color="#841584"
@@ -78,7 +89,13 @@ const NewModuleButton = () => {
         color="#f73947"
         onPress={onButton5Press}
       /> */}
-    </>
+
+      <Button
+        title="Android Calender Event with promise"
+        color="#f54288"
+        onPress={onButton6Press}
+      />
+    </SafeAreaView>
   )
 }
 
