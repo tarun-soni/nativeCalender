@@ -35,18 +35,20 @@ RCT_EXPORT_METHOD(createCalendarEventCallback:(NSString *)title
   }
 }
 
-//RCT_EXPORT_METHOD(createCalendarEventWithPromise:(NSString *)title
-//                 location:(NSString *)location
-//                 resolver:(RCTPromiseResolveBlock)resolve
-//                 rejecter:(RCTPromiseRejectBlock)reject)
-//{
-// NSInteger eventId = createCalendarEvent();
-// if (eventId) {
-//    resolve(@(eventId));
-//  } else {
-//    reject(@"event_failure", @"no event id returned", nil);
-//  }
-//}
+RCT_EXPORT_METHOD(createPromiseCalendarEvent:(NSString *)title
+                 location:(NSString *)location
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject)
+{
+  NSUInteger r = arc4random_uniform(100);
+
+  NSInteger eventId = r;
+  if (eventId) {
+    resolve(@(eventId));
+  } else {
+    reject(@"event_failure", @"no event id returned", nil);
+  }
+}
 
 
 
