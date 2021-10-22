@@ -7,6 +7,7 @@ import {
 } from 'react-native'
 import NewModuleButton from './NewModuleButton'
 import PickImage from './PickImage'
+import TorchModule from './TorchModule'
 
 const App = () => {
   // useEffect(() => {
@@ -27,6 +28,8 @@ const App = () => {
       <Text>Calender Native </Text>
       <NewModuleButton />
       {/* <PickImage /> */}
+
+      <TorchModule />
     </SafeAreaView>
   )
 }

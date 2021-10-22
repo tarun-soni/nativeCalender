@@ -12,6 +12,8 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		4AA7DFC82722CF8600E9847A /* Torch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA7DFC72722CF8600E9847A /* Torch.swift */; };
+		4AA7DFCA2722D11E00E9847A /* Torch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA7DFC92722D11E00E9847A /* Torch.m */; };
 		4AFF45082718163D0090219C /* RCTCalendarModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF45072718163D0090219C /* RCTCalendarModule.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		B096554775CADF9AAFDE9C85 /* libPods-nativeCalender.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4847AF875DA21E6DA73B8610 /* libPods-nativeCalender.a */; };
@@ -42,6 +44,9 @@
 		384462E088F8AEF57A78F9CC /* libPods-nativeCalender-nativeCalenderTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-nativeCalender-nativeCalenderTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4054C061F566574708A3EA5C /* Pods-nativeCalender.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nativeCalender.debug.xcconfig"; path = "Target Support Files/Pods-nativeCalender/Pods-nativeCalender.debug.xcconfig"; sourceTree = "<group>"; };
 		4847AF875DA21E6DA73B8610 /* libPods-nativeCalender.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-nativeCalender.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AA7DFC62722CF8600E9847A /* nativeCalender-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nativeCalender-Bridging-Header.h"; sourceTree = "<group>"; };
+		4AA7DFC72722CF8600E9847A /* Torch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Torch.swift; sourceTree = "<group>"; };
+		4AA7DFC92722D11E00E9847A /* Torch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Torch.m; sourceTree = "<group>"; };
 		4AFF4506271815CA0090219C /* RCTCalendarModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTCalendarModule.h; sourceTree = "<group>"; };
 		4AFF45072718163D0090219C /* RCTCalendarModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTCalendarModule.m; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = nativeCalender/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -97,6 +102,9 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				4AFF4506271815CA0090219C /* RCTCalendarModule.h */,
+				4AA7DFC72722CF8600E9847A /* Torch.swift */,
+				4AA7DFC92722D11E00E9847A /* Torch.m */,
+				4AA7DFC62722CF8600E9847A /* nativeCalender-Bridging-Header.h */,
 			);
 			name = nativeCalender;
 			sourceTree = "<group>";
@@ -212,7 +220,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1300;
 					};
 				};
 			};
@@ -417,7 +425,9 @@
 			files = (
 				4AFF45082718163D0090219C /* RCTCalendarModule.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				4AA7DFC82722CF8600E9847A /* Torch.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				4AA7DFCA2722D11E00E9847A /* Torch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +446,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1C3ED91AD9CB86F174DB641A /* Pods-nativeCalender-nativeCalenderTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -463,6 +474,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 88D3E072AA9F1E6C90AD0FB8 /* Pods-nativeCalender-nativeCalenderTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = nativeCalenderTests/Info.plist;
@@ -490,6 +502,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6GQUGCDC2C;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = nativeCalender/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -503,6 +516,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = nativeCalender;
+				SWIFT_OBJC_BRIDGING_HEADER = "nativeCalender-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -516,6 +530,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6GQUGCDC2C;
 				INFOPLIST_FILE = nativeCalender/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -528,6 +543,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = nativeCalender;
+				SWIFT_OBJC_BRIDGING_HEADER = "nativeCalender-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
