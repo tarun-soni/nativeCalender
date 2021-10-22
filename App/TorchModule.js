@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   NativeModules,
+  NativeEventEmitter,
   Text,
   TouchableOpacity,
   View,
@@ -9,6 +10,18 @@ import {
 
 const TorchModule = () => {
   const { Torch } = NativeModules
+  const [torchState, setTorchState] = useState(false)
+  useEffect(() => {
+    const TorchEvent = new NativeEventEmitter(Torch)
+    let torchListener = null
+    torchListener = TorchEvent.addListener('onChange', result => {
+      console.log('result', result)
+      setTorchState(result)
+    })
+    return () => {
+      torchListener.remove()
+    }
+  }, [Torch])
   const onTorchOn = async () => {
     Torch.on()
   }
@@ -23,7 +36,7 @@ const TorchModule = () => {
     mainVew: {
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#444',
+      // backgroundColor: '#f5f5',
       margin: 10,
       padding: 40,
     },
@@ -36,20 +49,28 @@ const TorchModule = () => {
       justifyContent: 'center',
       alignItems: 'center',
     },
+    button: { color: '#fff', fontSize: 30 },
   })
 
   return (
-    <View style={styles.mainVew}>
-      <TouchableOpacity onPress={onTorchOn} style={styles.torchButton}>
-        <Text style={{ color: 'green', fontSize: 30 }}>ON</Text>
-      </TouchableOpacity>
+    <View>
+      <View
+        style={[
+          styles.mainVew,
+          { backgroundColor: torchState ? 'green' : 'gray' },
+        ]}
+      >
+        <TouchableOpacity onPress={onTorchOn} style={styles.torchButton}>
+          <Text style={styles.button}>ON</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity onPress={onTorchOff} style={styles.torchButton}>
-        <Text style={{ color: 'red', fontSize: 30 }}>OFF</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={dateAddEvent} style={styles.torchButton}>
-        <Text style={{ color: 'yellow', fontSize: 30 }}>add event</Text>
-      </TouchableOpacity>
+        <TouchableOpacity onPress={onTorchOff} style={styles.torchButton}>
+          <Text style={styles.button}>OFF</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={dateAddEvent} style={styles.torchButton}>
+          <Text style={styles.button}>add event</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }

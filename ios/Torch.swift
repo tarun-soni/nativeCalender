@@ -10,7 +10,7 @@ import AVFoundation
 
 
 @objc(Torch)
-class Torch : NSObject{
+class Torch : RCTEventEmitter {
   
   @objc
   func on () {
@@ -34,6 +34,8 @@ class Torch : NSObject{
           try device.lockForConfiguration()
           device.torchMode = on ? .on : .off
           device.unlockForConfiguration()
+        sendEvent(withName: "onChange", body: on )
+        
       } catch {
           print("Torch could not be used")
       }
@@ -52,5 +54,12 @@ class Torch : NSObject{
       return ["someKey": "someValue"]
     }
   }
+  
+  
+  
+  override func supportedEvents() -> [String]! {
+    return ["onChange"]
+  }
+  
   
 }
