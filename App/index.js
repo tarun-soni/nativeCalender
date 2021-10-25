@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react'
 import {
   NativeEventEmitter,
@@ -5,9 +6,9 @@ import {
   SafeAreaView,
   Text,
 } from 'react-native'
-import NewModuleButton from './NewModuleButton'
-import PickImage from './PickImage'
-import TorchModule from './TorchModule'
+import NewModuleButton from './components/NewModuleButton'
+import PickImage from './components/PickImage'
+import TorchModule from './components/TorchModule'
 
 const App = () => {
   // useEffect(() => {

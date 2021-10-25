@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react'
 import { NativeModules, Button, SafeAreaView } from 'react-native'
 
@@ -63,7 +64,7 @@ const NewModuleButton = () => {
       )
       console.log(`Created a new event with id ${eventId}`)
     } catch (error) {
-      console.log(`error`, error)
+      console.log('error', error)
     }
   }
   return (
