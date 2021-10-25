@@ -1,14 +1,9 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect } from 'react'
-import {
-  NativeEventEmitter,
-  NativeModules,
-  SafeAreaView,
-  Text,
-} from 'react-native'
-import NewModuleButton from './components/NewModuleButton'
-import PickImage from './components/PickImage'
-import TorchModule from './components/TorchModule'
+/* eslint-disable no-lone-blocks */
+import React from 'react'
+import { SafeAreaView, Text } from 'react-native'
+import { Provider } from 'react-redux'
+import Users from './components/Users'
+import { store } from './store'
 
 const App = () => {
   // useEffect(() => {
@@ -25,14 +20,22 @@ const App = () => {
   // }, [])
 
   return (
-    <SafeAreaView>
-      <Text>Calender Native </Text>
-      <NewModuleButton />
-      {/* <PickImage /> */}
+    <Provider store={store}>
+      <SafeAreaView>
+        <Text>Hello</Text>
 
-      <TorchModule />
-    </SafeAreaView>
+        <Users />
+      </SafeAreaView>
+    </Provider>
   )
 }
 
 export default App
+
+{
+  /* <Text>Calender Native </Text>
+      <NewModuleButton />
+      <PickImage /> 
+
+      <TorchModule /> */
+}
