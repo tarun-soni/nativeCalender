@@ -3,6 +3,16 @@ import { Button, StyleSheet, Text, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserFetch } from '../store/actions'
 
+const styles = StyleSheet.create({
+  userList: {
+    margin: 5,
+    padding: 10,
+  },
+  name: {
+    fontSize: 24,
+  },
+})
+
 const Users = () => {
   const dispatch = useDispatch()
 
@@ -16,12 +26,13 @@ const Users = () => {
 
   return (
     <View>
-      {console.log(`users`, users)}
       <Text>Users:</Text>
 
       <View>
         {users?.map(user => (
-          <Text>{user.name}</Text>
+          <View key={user.id} style={styles.userList}>
+            <Text style={styles.name}>{user.name}</Text>
+          </View>
         ))}
 
         <Button title="get usrs" onPress={getUsersHandler} />
