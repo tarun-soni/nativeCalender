@@ -1,25 +1,17 @@
-import { matches } from 'lodash'
+import { isEmpty } from 'lodash'
 import { takeEvery, call, put } from 'redux-saga/effects'
 import { GET_USERS_FAILED, GET_USERS_FETCH, GET_USERS_SUCCESS } from './actions'
 
 async function usersFetch() {
   try {
-    const result = await fetch('https://jsonplaceholder.typicode.com/usersss')
+    const result = await fetch('https://jsonplaceholder.typicode.com/users')
 
     const data = await result.json()
 
-    if (matches(data, {})) {
-      return {
-        success: false,
-        data: 'NOT FOUND',
-        error: true,
-      }
-    }
-
-    return {
-      success: true,
-      data: result,
-      error: false,
+    if (isEmpty(data)) {
+      return { success: false, data: 'NOT FOUND', error: true }
+    } else {
+      return { success: true, data: data, error: false }
     }
   } catch (error) {
     return { success: false, data: error, error: true }
