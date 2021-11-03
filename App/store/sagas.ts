@@ -1,6 +1,7 @@
 import { isEmpty } from 'lodash'
 import { takeEvery, call, put } from 'redux-saga/effects'
 import { GET_USERS_FAILED, GET_USERS_FETCH, GET_USERS_SUCCESS } from './actions'
+import { User, UserFetch } from '../types'
 
 async function usersFetch() {
   try {
@@ -19,15 +20,15 @@ async function usersFetch() {
 }
 
 function* workGetUsersFetch() {
-  const fetchedUsers = yield call(usersFetch)
+  const fetchedUsers: UserFetch = yield call(usersFetch)
 
-  let users = []
+  let users: User[]
 
   if (fetchedUsers.success) {
     users = fetchedUsers.data
-    yield put({ type: GET_USERS_SUCCESS, users })
+    yield put({ type: GET_USERS_SUCCESS, payload: users })
   } else {
-    yield put({ type: GET_USERS_FAILED, users })
+    yield put({ type: GET_USERS_FAILED, payload: null })
   }
 }
 

@@ -14,7 +14,7 @@ const TorchModule = () => {
   const [torchState, setTorchState] = useState(false)
   useEffect(() => {
     const TorchEvent = new NativeEventEmitter(Torch)
-    let torchListener = null
+    let torchListener: any | null
     torchListener = TorchEvent.addListener('onChange', result => {
       console.log('result', result)
       setTorchState(result)
