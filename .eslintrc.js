@@ -7,6 +7,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 0,
     'react/jsx-curly-new-line': 0,
     'no-param-reassign': 0,
+    'react-native/no-inline-styles': 0,
     // 'import/extensions': [
     //   'error',
     //   'ignorePackages',

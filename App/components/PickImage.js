@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, NativeModules, SafeAreaView } from 'react-native'
+import { Button, NativeModules, Text, View } from 'react-native'
 
 const PickImage = () => {
   const { ImagePickerModule } = NativeModules
@@ -11,9 +11,19 @@ const PickImage = () => {
   }
 
   return (
-    <SafeAreaView>
+    <View
+      style={{
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 2,
+        width: '80%',
+        marginVertical: 50,
+      }}
+    >
+      <Text>Pick image (android only)</Text>
+
       <Button onPress={onPickImagePress} title="pickimage" />
-    </SafeAreaView>
+    </View>
   )
 }
 

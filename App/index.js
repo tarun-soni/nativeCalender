@@ -1,9 +1,12 @@
 /* eslint-disable no-lone-blocks */
 import React from 'react'
-import { SafeAreaView, Text } from 'react-native'
+import { SafeAreaView, Text, View } from 'react-native'
 import { Provider } from 'react-redux'
 import Users from './components/Users'
 import { store } from './store'
+import NewModuleButton from './components/NewModuleButton'
+import PickImage from './components/PickImage'
+import TorchModule from './components/TorchModule'
 
 const App = () => {
   // useEffect(() => {
@@ -21,9 +24,17 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <SafeAreaView>
-        <Text>Hello</Text>
+      <SafeAreaView
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginVertical: 50,
+        }}
+      >
+        {/* <NewModuleButton /> */}
 
+        {/* <PickImage /> */}
+        {/* <TorchModule /> */}
         <Users />
       </SafeAreaView>
     </Provider>
@@ -35,6 +46,7 @@ export default App
 {
   /* <Text>Calender Native </Text>
       <NewModuleButton />
+      
       <PickImage /> 
 
       <TorchModule /> */

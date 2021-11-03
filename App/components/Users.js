@@ -9,7 +9,8 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   name: {
-    fontSize: 24,
+    fontSize: 20,
+    color: 'gray',
   },
 })
 
@@ -17,16 +18,20 @@ const Users = () => {
   const dispatch = useDispatch()
 
   const users = useSelector(state => state.myFirstReducer.users)
-  // console.log(`state`, state)
-  function getUsersHandler() {
-    console.log('in get uset')
 
+  function getUsersHandler() {
     dispatch(getUserFetch())
   }
 
   return (
-    <View>
-      <Text>Users:</Text>
+    <View
+      style={{
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginVertical: 50,
+      }}
+    >
+      <Text style={{ fontSize: 30 }}>Users:</Text>
 
       <View>
         {users?.map(user => (
@@ -35,7 +40,7 @@ const Users = () => {
           </View>
         ))}
 
-        <Button title="get usrs" onPress={getUsersHandler} />
+        <Button title="FETCH USERS" onPress={getUsersHandler} />
       </View>
     </View>
   )
