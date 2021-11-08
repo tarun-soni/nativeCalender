@@ -1,7 +1,7 @@
-import { PostsActions, PostsState } from '../../../types'
+import { PostsActions, PostsInitState } from '../../../types/types'
 import { postTypes } from '../../ActionTypes/postTypes'
 
-const initialState: PostsState = {
+const initialState: PostsInitState = {
   pending: false,
   posts: [],
   error: null,

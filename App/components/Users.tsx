@@ -3,6 +3,7 @@ import { Button, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../store'
 import { fetchPostsRequest } from '../store/actions/postActions'
+import { fetchUserRequest } from '../store/actions/userActions'
 
 const styles = StyleSheet.create({
   userList: {
@@ -18,9 +19,12 @@ const styles = StyleSheet.create({
 const Users = () => {
   const dispatch = useDispatch()
   const { posts } = useSelector((state: RootState) => state.posts)
-
+  const { users } = useSelector((state: RootState) => state.users)
   function getPostsHandler() {
     dispatch(fetchPostsRequest())
+  }
+  function getUsersHandler() {
+    dispatch(fetchUserRequest())
   }
 
   return (
@@ -36,13 +40,19 @@ const Users = () => {
       <ScrollView>
         {posts?.map(user => (
           <View key={user.id} style={styles.userList}>
-            <Text style={styles.name}> id - {user.userId}</Text>
-            <Text style={styles.name}>title -{user.title}</Text>
+            <Text style={styles.name}> post id - {user.userId}</Text>
+            <Text style={styles.name}>post title -{user.title}</Text>
+          </View>
+        ))}
+        {users?.map(user => (
+          <View key={user.id} style={styles.userList}>
+            <Text style={styles.name}>user id - {user.id}</Text>
+            <Text style={styles.name}>username -{user.username}</Text>
           </View>
         ))}
 
-        {console.log('posts :>> ', posts)}
         <Button title="FETCH POSTS" onPress={getPostsHandler} />
+        <Button title="FETCH Users" onPress={getUsersHandler} />
       </ScrollView>
     </View>
   )

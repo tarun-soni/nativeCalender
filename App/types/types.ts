@@ -1,10 +1,4 @@
-import { postTypes } from './store/ActionTypes/postTypes'
-
-export type AxiosFetchReturn = {
-  success: boolean
-  data: any
-  error: boolean
-}
+import { postTypes } from '../store/ActionTypes/postTypes'
 
 export interface IPost {
   userId: number
@@ -13,7 +7,7 @@ export interface IPost {
   completed: boolean
 }
 
-export interface PostsState {
+export interface PostsInitState {
   pending: boolean
   posts: IPost[]
   error: string | null

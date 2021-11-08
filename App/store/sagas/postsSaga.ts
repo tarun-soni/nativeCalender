@@ -1,6 +1,6 @@
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 import { all, call, put, takeLatest } from 'redux-saga/effects'
-import { AxiosFetchReturn, IPost } from '../../types'
+import { IPost } from '../../types/types'
 
 import { fetchPostsFailure, fetchPostsSuccess } from '../actions/postActions'
 import { postTypes } from '../ActionTypes/postTypes'
@@ -10,7 +10,12 @@ const getPosts = () =>
 
 function* fetchPostsSaga() {
   try {
-    const response: AxiosFetchReturn = yield call(getPosts)
+    const response: Promise<AxiosResponse<IPost[], any>> = yield call(getPosts)
+    console.log(
+      '🚀 ~ file: postsSaga.ts ~ line 14 ~ function*fetchPostsSaga ~ response',
+      response,
+    )
+
     yield put(
       fetchPostsSuccess({
         posts: response.data,
