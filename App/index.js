@@ -3,10 +3,10 @@ import React from 'react'
 import { SafeAreaView } from 'react-native'
 import { Provider } from 'react-redux'
 import Users from './components/Users'
-import { store } from './store'
 import NewModuleButton from './components/NewModuleButton'
 import PickImage from './components/PickImage'
 import TorchModule from './components/TorchModule'
+import { store } from './store'
 
 const App = () => {
   // useEffect(() => {

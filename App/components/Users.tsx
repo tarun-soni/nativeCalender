@@ -1,8 +1,8 @@
 import React from 'react'
-import { Button, StyleSheet, Text, View } from 'react-native'
+import { Button, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUserFetch } from '../store/actions'
-import { User } from '../types'
+import { RootState } from '../store'
+import { fetchPostsRequest } from '../store/actions/postActions'
 
 const styles = StyleSheet.create({
   userList: {
@@ -15,19 +15,12 @@ const styles = StyleSheet.create({
   },
 })
 
-// export function useSelectorTyped<T>(fn: (state: RootState) => T): T {
-//   return useSelector(fn)
-// }
-
 const Users = () => {
   const dispatch = useDispatch()
+  const { posts } = useSelector((state: RootState) => state.posts)
 
-  const users = useSelector((state: any) => state.myFirstReducer.users)
-
-  // const users = useSelectorTyped(state => state.users)
-
-  function getUsersHandler() {
-    dispatch(getUserFetch())
+  function getPostsHandler() {
+    dispatch(fetchPostsRequest())
   }
 
   return (
@@ -40,15 +33,17 @@ const Users = () => {
     >
       <Text style={{ fontSize: 30 }}>Users:</Text>
 
-      <View>
-        {users?.map((user: User) => (
+      <ScrollView>
+        {posts?.map(user => (
           <View key={user.id} style={styles.userList}>
-            <Text style={styles.name}>{user.name}</Text>
+            <Text style={styles.name}> id - {user.userId}</Text>
+            <Text style={styles.name}>title -{user.title}</Text>
           </View>
         ))}
 
-        <Button title="FETCH USERS" onPress={getUsersHandler} />
-      </View>
+        {console.log('posts :>> ', posts)}
+        <Button title="FETCH POSTS" onPress={getPostsHandler} />
+      </ScrollView>
     </View>
   )
 }
