@@ -9,7 +9,7 @@ const initialState: UserInitState = {
 
 export default (state = initialState, action: UserActions) => {
   switch (action.type) {
-    case userTypes.FETCH_USER_FAILURE:
+    case userTypes.FETCH_USER_REQUEST:
       return {
         ...state,
         pending: true,

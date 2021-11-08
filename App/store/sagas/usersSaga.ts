@@ -1,16 +1,17 @@
-import axios, { AxiosResponse } from 'axios'
+import axios from 'axios'
 import { all, call, put, takeLatest } from 'redux-saga/effects'
+import { ResponseGenerator } from '../../types/genericTypes'
 import { IUser } from '../../types/userTypes'
 
 import { fetchUsersFailure, fetchUsersSuccess } from '../actions/userActions'
 import { userTypes } from '../ActionTypes/userTypes'
 
-const getPosts = () =>
+const getUsers = () =>
   axios.get<IUser[]>('https://jsonplaceholder.typicode.com/users')
 
 function* fetchUsersSaga() {
   try {
-    const response: Promise<AxiosResponse<IUser[], any>> = yield call(getPosts)
+    const response: ResponseGenerator = yield call(getUsers)
     console.log(
       '🚀 ~ file: postsSaga.ts ~ line 14 ~ function*fetchPostsSaga ~ response',
       response,

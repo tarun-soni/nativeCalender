@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { all, call, put, takeLatest } from 'redux-saga/effects'
-import { IPost, ResponseGenerator } from '../../types/types'
+import { IPost } from '../../types/postTypes'
+import { ResponseGenerator } from '../../types/genericTypes'
 
 import { fetchPostsFailure, fetchPostsSuccess } from '../actions/postActions'
 import { postTypes } from '../ActionTypes/postTypes'

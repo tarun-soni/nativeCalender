@@ -5,7 +5,7 @@ import {
   FetchPostsRequest,
   FetchPostsSuccess,
   FetchPostsSuccessPayload,
-} from '../../types/types'
+} from '../../types/postTypes'
 
 export const fetchPostsRequest = (): FetchPostsRequest => ({
   type: postTypes.FETCH_POST_REQUEST,
