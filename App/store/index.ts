@@ -4,6 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import postReducer from './reducers/postReducer'
 import userReducer from './reducers/userReducer'
 import rootSaga from './sagas/rootSaga'
+import logger from 'redux-logger'
 
 const sagaMiddleware = createSagaMiddleware()
 const rootReducer = combineReducers({
@@ -13,7 +14,7 @@ const rootReducer = combineReducers({
 
 const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(sagaMiddleware)),
+  composeWithDevTools(applyMiddleware(sagaMiddleware, logger)),
 )
 sagaMiddleware.run(rootSaga)
 
