@@ -1,7 +1,8 @@
-import { User } from '../../types'
+import { RootState, User } from '../../types'
+
 import { GET_USERS_FAILED, GET_USERS_SUCCESS } from '../actions'
 
-const inititalState = {
+const inititalState: RootState = {
   users: [],
 }
 

@@ -1,6 +1,6 @@
 /* eslint-disable no-lone-blocks */
 import React from 'react'
-import { SafeAreaView, Text, View } from 'react-native'
+import { SafeAreaView } from 'react-native'
 import { Provider } from 'react-redux'
 import Users from './components/Users'
 import { store } from './store'
@@ -11,8 +11,8 @@ import TorchModule from './components/TorchModule'
 const App = () => {
   // useEffect(() => {
   //   let eventListener = null
-
-  //   const eventEmitter = new NativeEventEmitter(NativeModules.ToastExample)
+  //   const { ToastExample } = NativeModules
+  //   const eventEmitter = new NativeEventEmitter(ToastExample)
   //   eventListener = eventEmitter.addListener('EventReminder', event => {
   //     console.log('event.eventProperty', event.eventProperty) // "someValue"
   //   })

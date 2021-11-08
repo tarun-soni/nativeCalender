@@ -7,8 +7,16 @@ export type User = {
   email: string
 }
 
+export type RootState = {
+  users: User[]
+}
+
 export type UserFetch = {
   success: boolean
   data: any
   error: boolean
+}
+
+export type myFirstReducerType = {
+  users: User
 }
