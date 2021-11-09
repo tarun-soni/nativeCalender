@@ -2,9 +2,9 @@ import { useNavigation } from '@react-navigation/core'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React from 'react'
 import { SafeAreaView, Button } from 'react-native'
-import { StackProps } from '../navigation'
+import { HomeStackProps } from '../navigation'
 
-type authScreenType = NativeStackNavigationProp<StackProps>
+type authScreenType = NativeStackNavigationProp<HomeStackProps>
 
 const HomeScreen = () => {
   const navigation = useNavigation<authScreenType>()

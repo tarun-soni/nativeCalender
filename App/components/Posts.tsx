@@ -21,15 +21,21 @@ const Posts = () => {
     dispatch(fetchPostsRequest())
   }
   return (
-    <View>
+    <View
+      style={{
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginVertical: 50,
+      }}
+    >
       <Button title="FETCH POSTS" onPress={getPostsHandler} />
+      <Text style={{ fontSize: 30 }}>Posts:</Text>
       {pending ? (
         <ActivityIndicator size="small" />
       ) : error ? (
         <Text>Error</Text>
       ) : (
         <View>
-          <Text>Users</Text>
           <ScrollView>
             {posts?.map(post => (
               <View key={post.id} style={styles.userList}>

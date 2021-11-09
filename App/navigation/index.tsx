@@ -4,21 +4,21 @@ import UserScreen from '../screens/UserScreen'
 import PostScreen from '../screens/PostScreen'
 import HomeScreen from '../screens/HomeScreen'
 
-export type StackProps = {
+export type HomeStackProps = {
   HomeScreen: undefined
   UserScreen: undefined
   PostScreen: undefined
 }
 
-const Stack = createNativeStackNavigator<StackProps>()
+const HomeStack = createNativeStackNavigator<HomeStackProps>()
 
 const Navigation = () => {
   return (
-    <Stack.Navigator initialRouteName={'HomeScreen'}>
-      <Stack.Screen name={'HomeScreen'} component={HomeScreen} />
-      <Stack.Screen name={'UserScreen'} component={UserScreen} />
-      <Stack.Screen name={'PostScreen'} component={PostScreen} />
-    </Stack.Navigator>
+    <HomeStack.Navigator initialRouteName={'HomeScreen'}>
+      <HomeStack.Screen name={'HomeScreen'} component={HomeScreen} />
+      <HomeStack.Screen name={'UserScreen'} component={UserScreen} />
+      <HomeStack.Screen name={'PostScreen'} component={PostScreen} />
+    </HomeStack.Navigator>
   )
 }
 export default Navigation

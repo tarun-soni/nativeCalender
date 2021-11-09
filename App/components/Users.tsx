@@ -42,9 +42,9 @@ const Users = () => {
       }}
     >
       <Text style={{ fontSize: 30 }}>Users:</Text>
-      <View>
-        <Button title="FETCH Users" onPress={getUsersHandler} />
-      </View>
+
+      <Button title="FETCH Users" onPress={getUsersHandler} />
+
       {pending ? (
         <ActivityIndicator size="small" />
       ) : error ? (
