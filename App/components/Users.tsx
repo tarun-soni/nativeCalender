@@ -1,8 +1,14 @@
 import React from 'react'
-import { Button, ScrollView, StyleSheet, Text, View } from 'react-native'
+import {
+  ActivityIndicator,
+  Button,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../store'
-import { fetchPostsRequest } from '../store/actions/postActions'
 import { fetchUserRequest } from '../store/actions/userActions'
 
 const styles = StyleSheet.create({
@@ -18,11 +24,11 @@ const styles = StyleSheet.create({
 
 const Users = () => {
   const dispatch = useDispatch()
-  const { posts } = useSelector((state: RootState) => state.posts)
-  const { users } = useSelector((state: RootState) => state.users)
-  function getPostsHandler() {
-    dispatch(fetchPostsRequest())
-  }
+
+  const { pending, users, error } = useSelector(
+    (state: RootState) => state.users,
+  )
+
   function getUsersHandler() {
     dispatch(fetchUserRequest())
   }
@@ -37,23 +43,26 @@ const Users = () => {
     >
       <Text style={{ fontSize: 30 }}>Users:</Text>
 
-      <ScrollView>
-        {posts?.map(user => (
-          <View key={user.id} style={styles.userList}>
-            <Text style={styles.name}> post id - {user.userId}</Text>
-            <Text style={styles.name}>post title -{user.title}</Text>
-          </View>
-        ))}
-        {users?.map(user => (
-          <View key={user.id} style={styles.userList}>
-            <Text style={styles.name}>user id - {user.id}</Text>
-            <Text style={styles.name}>username -{user.username}</Text>
-          </View>
-        ))}
-
-        <Button title="FETCH POSTS" onPress={getPostsHandler} />
+      {pending ? (
+        <ActivityIndicator size="small" />
+      ) : error ? (
+        <Text>Error</Text>
+      ) : (
+        <View>
+          <Text>Users</Text>
+          <ScrollView>
+            {users?.map(user => (
+              <View key={user.id} style={styles.userList}>
+                <Text style={styles.name}>user id - {user.id}</Text>
+                <Text style={styles.name}>username -{user.username}</Text>
+              </View>
+            ))}
+          </ScrollView>
+        </View>
+      )}
+      <View>
         <Button title="FETCH Users" onPress={getUsersHandler} />
-      </ScrollView>
+      </View>
     </View>
   )
 }

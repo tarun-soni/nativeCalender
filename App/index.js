@@ -7,6 +7,7 @@ import NewModuleButton from './components/NewModuleButton'
 import PickImage from './components/PickImage'
 import TorchModule from './components/TorchModule'
 import { store } from './store'
+import Posts from './components/Posts'
 
 const App = () => {
   // useEffect(() => {
@@ -36,18 +37,10 @@ const App = () => {
         {/* <PickImage /> */}
         {/* <TorchModule /> */}
         <Users />
+        {/* <Posts /> */}
       </SafeAreaView>
     </Provider>
   )
 }
 
 export default App
-
-{
-  /* <Text>Calender Native </Text>
-      <NewModuleButton />
-      
-      <PickImage /> 
-
-      <TorchModule /> */
-}
