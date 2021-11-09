@@ -42,14 +42,15 @@ const Users = () => {
       }}
     >
       <Text style={{ fontSize: 30 }}>Users:</Text>
-
+      <View>
+        <Button title="FETCH Users" onPress={getUsersHandler} />
+      </View>
       {pending ? (
         <ActivityIndicator size="small" />
       ) : error ? (
         <Text>Error</Text>
       ) : (
         <View>
-          <Text>Users</Text>
           <ScrollView>
             {users?.map(user => (
               <View key={user.id} style={styles.userList}>
@@ -60,9 +61,6 @@ const Users = () => {
           </ScrollView>
         </View>
       )}
-      <View>
-        <Button title="FETCH Users" onPress={getUsersHandler} />
-      </View>
     </View>
   )
 }
