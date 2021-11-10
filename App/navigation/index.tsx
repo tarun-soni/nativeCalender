@@ -3,14 +3,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import UserScreen from '../screens/UserScreen'
 import PostScreen from '../screens/PostScreen'
 import HomeScreen from '../screens/HomeScreen'
+import { HomeStackParamList } from '../types/navigation'
 
-export type HomeStackProps = {
-  HomeScreen: undefined
-  UserScreen: undefined
-  PostScreen: undefined
-}
-
-const HomeStack = createNativeStackNavigator<HomeStackProps>()
+const HomeStack = createNativeStackNavigator<HomeStackParamList>()
 
 const Navigation = () => {
   return (
